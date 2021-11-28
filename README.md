@@ -1,0 +1,1 @@
+# gb-arch-3-ddd-simple-pdm
