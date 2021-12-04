@@ -1,0 +1,25 @@
+@startuml
+
+left to right direction
+
+object Item {
+    name
+    description
+}
+object EbomRevision {
+    number
+    description
+    approved
+    approvedDate
+}
+object EbomLine {
+    number
+    item
+    qty
+}
+
+Item <-- EbomRevision
+EbomRevision <-- EbomLine
+EbomLine <-- Item
+
+@enduml

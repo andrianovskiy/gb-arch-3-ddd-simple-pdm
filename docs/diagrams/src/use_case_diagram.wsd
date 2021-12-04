@@ -1,0 +1,39 @@
+@startuml
+
+left to right direction
+
+actor "Конструктор" as engineer
+actor "Руководитель" as chief
+
+
+rectangle "Изделие" {
+    "Просмотр списка изделий" as (item_list)
+    "CRUD изделия" as (item_crud)
+}
+
+rectangle "Список версий" {
+    "Просмотр списка версий" as (ebomRevision_list)
+    "Создание версии" as (ebomRevision_create)
+    "Создание копии версии" as (ebomRevision_copy)
+    (ebomRevision_copy) .> (ebomRevision_create) : extend
+}
+
+rectangle "Изменение КСИ" {
+    "Просмотр КСИ версии" as (ebom_view)
+    "CRUD строки спецификацию" as (ebomLine_crud)
+    "Утверждение спецификации" as (ebom_approve)
+}
+
+engineer -- item_list
+engineer -- item_crud
+engineer -- ebomRevision_list
+engineer -- ebomRevision_create
+engineer -- ebom_view
+engineer -- ebomLine_crud
+
+item_list -- chief
+ebomRevision_list -- chief
+ebom_view -- chief
+ebom_approve -- chief
+
+@enduml
