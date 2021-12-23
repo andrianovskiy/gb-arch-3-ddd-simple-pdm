@@ -1,0 +1,40 @@
+@startuml
+
+entity Item {
+    id
+    name
+    description
+}
+entity EbomRevision {
+    id
+    item_id
+    number
+    description
+    approved
+    approvedDate
+}
+entity EbomLine {
+    id
+    ebomRevision_id
+    number
+    component_item_id
+    qty
+}
+
+interface ItemService {
+    
+}
+
+interface EbomRevisionService {
+    copyBom(ebomRevision: EbomRevision, toEbomRevision: EbomRevision): void
+}
+
+interface EbomLineService {
+}
+
+Item "1" - "*" EbomRevision
+EbomRevision "1" - "*" EbomLine
+EbomLine "1" - "1" Item
+
+
+@enduml
